@@ -14,12 +14,38 @@ body{
     height: 100px;
 }
 .avatar-image > img{
-    width: 80px;
+    width: 70px;
     padding: 10px;
     border-radius: 999px;
 }
 
 .avatar-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-icon > i{
+    padding: 10px;
+    font-size: 20px;
+    color: grey;
+}
+
+.user-info p{
+    color: grey;
+    font-size: 0.8em;
+}
+
+.user-option{
+    background-color: rgba(146, 255, 145,0.7);
+}
+
+.bell-slash > i{
+    color: currentColor;
+    font-size: 25px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 999px;
     display: flex;
     justify-content: center;
     align-items: center;

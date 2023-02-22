@@ -19,8 +19,42 @@
     <div id="app">
         <div class="container">
             <div class="row justify-content-center p-4">
-                <!-- CONTACTS -->
-                <div class="col-5 bg-white vh-100">
+
+                <div class="col-4 bg-white vh-100">
+                    <!-- USER OPTION -->
+                    <div class="row user-option">
+                        <div class="avatar-image col-2">
+                            <img src="./img/avatar_1.png" alt="">
+                        </div>
+                        <div class="col-1 d-flex align-items-center fw-bold">
+                            <span>Jero</span>
+                        </div>
+                        <div class="avatar-icon col-9 d-flex justify-content-end align-items-center">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <!-- NOTIFICHE -->
+                    <div class="row bg-primary-subtle p-3 align-items-center">
+                        <div class="col-3 bell-slash">
+                            <i class="fa-solid fa-bell-slash text-primary"></i>
+                        </div>
+                        <div class="col-9">
+                            <p class="fs-6 fw-bold mb-0">Ricevi notifiche di nuovi messaggi</p>
+                            <a href="#">Attiva notifiche Desktop</a>
+                        </div>
+                    </div>
+                    <!-- SEARCH BAR -->
+                    <div class="row py-2">
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                      </div>
+                    </div>
+                    <!-- CONTACTS -->
                     <div v-for="(contact,i) in contacts" class="row border-bottom ">
                         <!-- AVATAR -->
                         <div class="avatar-image col-2">
@@ -30,16 +64,14 @@
                         <div class="user-info col-10 p-2">
                             <div class="d-flex justify-content-between align-items-center py-1">
                                 <span class="fs-6 fw-bold">{{contact.name}}</span>
-                                <span class="hours">12:00</span>
+                                <p class="hours mb-0">12:00</p>
                             </div>
                             <p class="mb-0">ultimo messaggio inviato</p>
-
-
                         </div>
                     </div>
                 </div>
                 <!-- CHAT -->
-                <div class="col-7 vh-100">
+                <div class="col-8 vh-100 bg-warning">
                     chat
                 </div>
             </div>
