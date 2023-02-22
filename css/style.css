@@ -1,0 +1,12 @@
+[class*="col-"]{
+    border: 2px solid black;
+}
+
+
+
+body{
+    background-color: lightgray;
+}
+#header-back{
+    height: 100px;
+}
