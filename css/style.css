@@ -25,7 +25,7 @@ body {
 .avatar-icon>i {
     padding: 10px;
     font-size: 20px;
-    color: grey;
+    color: gray;
 }
 
 .user-info p {
@@ -34,7 +34,7 @@ body {
 }
 
 .user-option {
-    background-color: rgba(146, 255, 145, 0.7);
+    background-color: #EAEAEA;
 }
 
 .bell-slash>i {
@@ -54,6 +54,7 @@ body {
 
 .user-bar {
     border-left: 1px solid lightgray;
+    background-color: #EAEAEA;
 }
 
 .write-bar {
@@ -79,12 +80,27 @@ body {
 .message.sent{
     background-color: #009688;
     display: flex;
-    align-self: flex-start;
+    align-self: flex-end;
     max-width: 60%;
 }
 .message.receved   {
     background-color: white;
     max-width: 60%;
     display: flex;
-    align-self: flex-end;
+    align-self: flex-start;
+}
+
+.toolbar{
+    border-left: 1px solid lightgrey;
+}
+
+.toolbar > [class^="col-"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.active{
+    background-color: #EDEFEF;
 }

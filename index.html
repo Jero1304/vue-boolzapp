@@ -58,7 +58,11 @@
                     </div>
 
                     <!-- CONTACTS -->
-                    <div v-for="(contact,i) in contacts" class="row border-bottom ">
+                    <div v-for="(contact,i) in contacts" 
+                    class="row border-bottom "
+                    @click="chatSelection(i)"
+                    :class=""
+                    >
                         <!-- IMMAGINE PROFILO -->
                         <div class="avatar-image col-2">
                             <img :src="contact.avatar" alt="">
@@ -71,7 +75,6 @@
                             </div>
                             <p class="mb-0">ultimo messaggio inviato</p>
                         </div>
-
                     </div>
 
                 </div>
@@ -79,8 +82,9 @@
                 <!-- CHAT -->
                 <div class="col-8 chat-bg d-flex flex-column">
                     <!-- USER -->
+                    
                     <!-- USER CHAT BAR -->
-                    <div class="user-bar row bg-white">
+                    <div class="user-bar row">
                         <!-- AVATAR & NAME -->
 
                         <div class="col-8 px-4">
@@ -104,21 +108,30 @@
                         </div>
                     </div>
 
-                    <div class="d-flex flex-column flex-grow-1 p-5 ">
-                        <div class="row message receved">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi ex, quis ut et magni tempora numquam autem fugiat veniam illo.
-                            <span class="time">12:00</span>
+                    <div  class="d-flex flex-column flex-grow-1 p-5" >
+                        <div class="message receved">
+                            tu
                         </div>
-                        <div class="row message sent">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi ex, quis ut et magni tempora numquam autem fugiat veniam illo.
-                            
-                            <span class="time">12:00</span>
+                        <div class="message sent">
+                            io
                         </div>
                     </div>
 
+                    <!-- <div v-for="(contact,index) in  contacts" class="d-flex flex-column flex-grow-1 p-5 ">
+                        <div class="message"
+                        v-for="(mex,i) in contact.messages"
+                        >
+                            {{mex.message}}   
+                            <span class="time">12:00</span>
+                        </div>
+
+                        
+                    </div> -->
+                    
+
                     <!-- WRITE TEXT -->
 
-                    <div class="row bg-white d-flex justify-content-center align-items-center p-2">
+                    <div class="toolbar row bg-white d-flex justify-content-center align-items-center p-2">
                         <div class="col-1">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
