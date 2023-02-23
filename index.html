@@ -58,22 +58,23 @@
                     </div>
 
                     <!-- CONTACTS -->
-                    <div v-for="(contact,i) in contacts" 
-                    class="row border-bottom "
-                    @click="chatSelection(i)"
-                    :class=""
-                    >
-                        <!-- IMMAGINE PROFILO -->
-                        <div class="avatar-image col-2">
-                            <img :src="contact.avatar" alt="">
-                        </div>
-                        <!-- USER NAME -->
-                        <div class="user-info col-10 p-2">
-                            <div class="d-flex justify-content-between align-items-center py-1">
-                                <span class="fs-6 fw-bold">{{contact.name}}</span>
-                                <p class="hours mb-0">12:00</p>
+                    <div class="chat-list">
+                        <div v-for="(contact,i) in contacts" 
+                        class="row border-bottom justify-content-center "
+                        @click="chatSelection(i)"
+                        >
+                            <!-- IMMAGINE PROFILO -->
+                            <div class="avatar-image col-2">
+                                <img :src="contact.avatar" alt="">
                             </div>
-                            <p class="mb-0">ultimo messaggio inviato</p>
+                            <!-- USER NAME -->
+                            <div class="user-info col-9 p-2">
+                                <div class="d-flex justify-content-between align-items-center py-1">
+                                    <span class="fs-6 fw-bold">{{contact.name}}</span>
+                                    <p class="hours mb-0">12:00</p>
+                                </div>
+                                <p class="mb-0">ultimo messaggio inviato</p>
+                            </div>
                         </div>
                     </div>
 
@@ -90,11 +91,11 @@
                         <div class="col-8 px-4">
                             <div class="row">
                                 <div class="avatar-image col-2">
-                                    <img src="./img/avatar_1.png" alt="">
+                                    <img :src="contacts[currentIndex].avatar" alt="">
                                 </div>
 
                                 <div class="col-auto d-flex align-items-center fw-bold">
-                                    <span>Jero</span>
+                                    <span>{{contacts[currentIndex].name}}</span>
                                 </div>
                             </div>
                         </div>
@@ -107,28 +108,16 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
-
-                    <div  class="d-flex flex-column flex-grow-1 p-5" >
-                        <div class="message receved">
-                            tu
-                        </div>
-                        <div class="message sent">
-                            io
+                    
+                    <div class="chat-open flex-grow-1 p-4">
+                        <div v-for="(mex,index) in contacts[currentIndex].messages" class="d-flex flex-column" >
+                            <div :class="mex.status === 'received' ? 'received':'sent'" class="message">
+                                {{mex.message}}
+                            </div>
+                            
                         </div>
                     </div>
-
-                    <!-- <div v-for="(contact,index) in  contacts" class="d-flex flex-column flex-grow-1 p-5 ">
-                        <div class="message"
-                        v-for="(mex,i) in contact.messages"
-                        >
-                            {{mex.message}}   
-                            <span class="time">12:00</span>
-                        </div>
-
                         
-                    </div> -->
-                    
-
                     <!-- WRITE TEXT -->
 
                     <div class="toolbar row bg-white d-flex justify-content-center align-items-center p-2">
@@ -137,7 +126,12 @@
                         </div>
 
                         <div class="col-10">
-                            <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                            <input type="text" 
+                            class="form-control" 
+                            placeholder="Scrivi un messaggio"
+                            v-model="inputValue"
+                            @keyup.enter="newMessage()"
+                            >
                         </div>
 
                         <div class="col-1">

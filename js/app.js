@@ -169,6 +169,7 @@ createApp({
         return {
             contacts: contacts,
             currentIndex:0,
+            inputValue:'',
 
 
         }
@@ -177,7 +178,16 @@ createApp({
         chatSelection(index){
             this.currentIndex = index
             console.log(this.currentIndex);
-        }
+        },
 
+        newMessage(){
+            const newMex ={
+                date: '10/01/2020 15:51:00',
+                message: this.inputValue,
+                status: 'sent'
+            }
+            this.contacts[this.currentIndex].messages.push(newMex)
+            this.inputValue = ''
+        },
     }
 }).mount('#app')

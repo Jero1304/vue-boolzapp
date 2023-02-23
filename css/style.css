@@ -83,7 +83,7 @@ body {
     align-self: flex-end;
     max-width: 60%;
 }
-.message.receved   {
+.message.received   {
     background-color: white;
     max-width: 60%;
     display: flex;
@@ -104,3 +104,8 @@ body {
 .active{
     background-color: #EDEFEF;
 }
+
+/* .chat-list,.chat-open{
+    overflow-x: hidden;
+    overflow-y: scroll;
+} */
