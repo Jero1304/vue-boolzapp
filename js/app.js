@@ -170,7 +170,9 @@ createApp({
             contacts: contacts,
             currentIndex:0,
             inputValue:'',
-
+            response: '',
+            time:[],
+            currentDate:'',
 
         }
     },
@@ -189,5 +191,8 @@ createApp({
             this.contacts[this.currentIndex].messages.push(newMex)
             this.inputValue = ''
         },
+        
+
+        
     }
 }).mount('#app')

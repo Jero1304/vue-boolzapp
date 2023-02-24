@@ -62,12 +62,14 @@ body {
 }
 
 .message{
-    background-color: white;
     border-radius: 12px;
     padding: 15px;
     position: relative;
     font-size: 14px;
     margin-bottom: 16px;
+    word-break: normal;
+    overflow-wrap: anywhere;
+
 }
 
 .message > .time{
