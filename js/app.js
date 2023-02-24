@@ -189,7 +189,7 @@ createApp({
             this.contacts[this.currentIndex].messages.push(newMex)
             this.inputValue = ''
 
-            setInterval(() => {
+            setTimeout(() => {
                 const newResponse ={
                     date: '10/01/2020 15:51:00',
                     message: 'ok',
