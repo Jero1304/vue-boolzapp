@@ -171,8 +171,6 @@ createApp({
             currentIndex:0,
             inputValue:'',
             response: '',
-            time:[],
-            currentDate:'',
 
         }
     },
@@ -190,8 +188,16 @@ createApp({
             }
             this.contacts[this.currentIndex].messages.push(newMex)
             this.inputValue = ''
+
+            setInterval(() => {
+                const newResponse ={
+                    date: '10/01/2020 15:51:00',
+                    message: 'ok',
+                    status: 'received'
+                }
+                this.contacts[this.currentIndex].messages.push(newResponse)
+            }, 2000)
         },
-        
 
         
     }

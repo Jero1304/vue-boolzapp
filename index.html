@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/c5d4023dee.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
 
 </head>
 
@@ -60,7 +61,8 @@
                     <!-- CONTACTS -->
                     <div class="chat-list">
                         <div v-for="(contact,i) in contacts" 
-                        class="row border-bottom justify-content-center "
+                        :class="i === currentIndex ? 'active' : ''"
+                        class="chat-list-user row border-bottom justify-content-center "
                         @click="chatSelection(i)"
                         >
                             <!-- IMMAGINE PROFILO -->
@@ -81,13 +83,11 @@
                 </div>
 
                 <!-- CHAT -->
-                <div class="col-8 chat-bg d-flex flex-column">
-                    <!-- USER -->
-                    
+                <div class="col-8 chat-bg d-flex flex-column">                
                     <!-- USER CHAT BAR -->
                     <div class="user-bar row">
-                        <!-- AVATAR & NAME -->
 
+                        <!-- AVATAR & NAME -->
                         <div class="col-8 px-4">
                             <div class="row">
                                 <div class="avatar-image col-2">
@@ -99,6 +99,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- OPTION -->
                         <div class="avatar-icon col-4 d-flex justify-content-end align-items-center">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -113,10 +114,13 @@
                             <div :class="mex.status === 'received' ? 'received':'sent'" class="message">
                                 {{mex.message}}
                                 <span class="time">12:00</span>
-                            </div>
-                            <!-- {{response}} -->
-                            
+                            </div>                            
+
                         </div>
+                        <!-- <div class="message received">
+                            {{response}}
+                            <span class="time">12:00</span>
+                        </div> -->
                     </div>
                         
                     <!-- WRITE TEXT -->

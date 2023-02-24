@@ -52,6 +52,10 @@ body {
     background-image: url('https://i.pinimg.com/originals/ab/ab/60/abab60f06ab52fa7846593e6ae0c9a0b.png');
 }
 
+.chat-list-user:hover{
+    background-color: #d2dbdc;
+}
+
 .user-bar {
     border-left: 1px solid lightgray;
     background-color: #EAEAEA;
@@ -104,7 +108,7 @@ body {
 }
 
 .active{
-    background-color: #EDEFEF;
+    background-color: #d2dbdc;
 }
 
 /* .chat-list,.chat-open{
