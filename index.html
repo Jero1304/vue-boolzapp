@@ -113,14 +113,9 @@
                         <div v-for="(mex,index) in contacts[currentIndex].messages" class="d-flex flex-column" >
                             <div :class="mex.status === 'received' ? 'received':'sent'" class="message">
                                 {{mex.message}}
-                                <span class="time">12:00</span>
+                                <span class="time">{{messageDate(index)}}</span>
                             </div>                            
-
                         </div>
-                        <!-- <div class="message received">
-                            {{response}}
-                            <span class="time">12:00</span>
-                        </div> -->
                     </div>
                         
                     <!-- WRITE TEXT -->

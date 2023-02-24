@@ -163,6 +163,7 @@ const contacts= [
     }
 ]
 
+const DateTime = luxon.DateTime
 
 createApp({
     data() {
@@ -170,7 +171,7 @@ createApp({
             contacts: contacts,
             currentIndex:0,
             inputValue:'',
-            response: '',
+            DateTime:DateTime,
 
         }
     },
@@ -182,7 +183,7 @@ createApp({
 
         newMessage(){
             const newMex ={
-                date: '10/01/2020 15:51:00',
+                date: this.now,
                 message: this.inputValue,
                 status: 'sent'
             }
@@ -191,14 +192,45 @@ createApp({
 
             setTimeout(() => {
                 const newResponse ={
-                    date: '10/01/2020 15:51:00',
+                    date: this.now,
                     message: 'ok',
                     status: 'received'
                 }
                 this.contacts[this.currentIndex].messages.push(newResponse)
-            }, 2000)
+            }, 1000)
         },
+
+        messageDate(i){
+            newDate = this.contacts[this.currentIndex].messages[i].date
+            // const formattedDate = newDate.toFormat('dd/LL/yyyy')
+            // newDate=this.DateTime.fromISO(newDate)
+            console.log(newDate);
+            return newDate
+        }
 
         
     }
 }).mount('#app')
+
+
+// const now = DateTime.now()
+// console.log(now)
+
+// const date = DateTime.fromObject({
+// 	year: 1990,
+// 	month: 10,
+// 	day: 24,
+// 	hour: 14,
+// 	minutes: 31,
+// 	seconds: 56,
+// })
+// console.log(date)
+
+// '24/10/1990'
+// const formattedDate = date.toFormat('dd/LL/yyyy')
+// console.log(formattedDate)
+
+// const dateToParse = '10/01/2020 15:30:55' // dd/LL/yyyy HH:mm:ss
+
+// const parsedDate = DateTime.fromFormat(dateToParse, 'dd/LL/yyyy HH:mm:ss')
+// console.log(parsedDate.toFormat('dd/LL/yyyy'))
