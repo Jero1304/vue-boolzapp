@@ -25,7 +25,7 @@
                     <!-- USER OPTION -->
                     <div class="row user-option">
                         <div class="avatar-image col-2">
-                            <img src="./img/avatar_1.png" alt="">
+                            <img src="./img/Jero_avatar.jpeg" alt="">
                         </div>
                         <div class="col-1 d-flex align-items-center fw-bold">
                             <span>Jero</span>
@@ -54,14 +54,23 @@
                             <span class="input-group-text" id="basic-addon1">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Search" 
+                            aria-label="Search"
+                            v-model="search"
+                            >
                         </div>
                     </div>
 
                     <!-- CONTACTS -->
                     <div class="chat-list">
                         <div v-for="(contact,i) in contacts" 
-                        :class="i === currentIndex ? 'active' : ''"
+                        :class="{
+                           'active': i === currentIndex,
+                           'hidden': isHidden(contact),
+                        }"
                         class="chat-list-user row border-bottom justify-content-center "
                         @click="chatSelection(i)"
                         >
@@ -73,9 +82,11 @@
                             <div class="user-info col-9 p-2">
                                 <div class="d-flex justify-content-between align-items-center py-1">
                                     <span class="fs-6 fw-bold">{{contact.name}}</span>
-                                    <p class="hours mb-0">12:00</p>
+                                    <p class="hours mb-0">{{lastDate(contact)}}</p>
                                 </div>
-                                <p class="mb-0">ultimo messaggio inviato</p>
+                                <p class="mb-0" >
+                                    {{lastMessage(contact)}}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -119,7 +130,6 @@
                     </div>
                         
                     <!-- WRITE TEXT -->
-
                     <div class="toolbar row bg-white d-flex justify-content-center align-items-center p-2">
                         <div class="col-1">
                             <i class="fa-regular fa-face-smile"></i>

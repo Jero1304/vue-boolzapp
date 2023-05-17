@@ -1,8 +1,8 @@
 body {
     height: 100vh;
     width: 100%;
-    overflow: hidden;
-
+    overflow-y:auto;
+    
     background: linear-gradient(to bottom,
             #009688 0px,
             #009688 15vh,
@@ -84,7 +84,7 @@ body {
     color: #979797;
 }
 .message.sent{
-    background-color: #009688;
+    background-color: #91F39A;
     display: flex;
     align-self: flex-end;
     max-width: 60%;
@@ -115,3 +115,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 } */
+
+.hidden{
+    display: none;
+}

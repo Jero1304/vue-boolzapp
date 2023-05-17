@@ -1,8 +1,8 @@
 const { createApp } = Vue
 const contacts= [
     {
-        name: 'Michele',
-        avatar: './img/avatar_1.png',
+        name: 'Joy',
+        avatar: './img/avatar_1.jpg',
         visible: true,
         messages: [
             {
@@ -23,7 +23,7 @@ const contacts= [
         ],
     },
     {
-        name: 'Fabio',
+        name: 'Rachel',
         avatar: './img/avatar_2.png',
         visible: true,
         messages: [
@@ -45,7 +45,7 @@ const contacts= [
         ],
     },
     {
-        name: 'Samuele',
+        name: 'Phoebe',
         avatar: './img/avatar_3.png',
         visible: true,
         messages: [
@@ -67,8 +67,8 @@ const contacts= [
         ],
     },
     {
-        name: 'Alessandro B.',
-        avatar: './img/avatar_4.png',
+        name: 'Ross',
+        avatar: './img/avatar_4.jpg',
         visible: true,
         messages: [
             {
@@ -84,8 +84,8 @@ const contacts= [
         ],
     },
     {
-        name: 'Alessandro L.',
-        avatar: './img/avatar_5.png',
+        name: 'Monica',
+        avatar: './img/avatar_5.jpg',
         visible: true,
         messages: [
             {
@@ -101,8 +101,8 @@ const contacts= [
         ],
     },
     {
-        name: 'Claudia',
-        avatar: './img/avatar_6.png',
+        name: 'Chandler',
+        avatar: './img/avatar_6.jpg',
         visible: true,
         messages: [
             {
@@ -123,7 +123,7 @@ const contacts= [
         ],
     },
     {
-        name: 'Federico',
+        name: 'Gunter',
         avatar: './img/avatar_7.png',
         visible: true,
         messages: [
@@ -140,8 +140,8 @@ const contacts= [
         ],
     },
     {
-        name: 'Davide',
-        avatar: './img/avatar_8.png',
+        name: 'Carol',
+        avatar: './img/avatar_8.jpg',
         visible: true,
         messages: [
             {
@@ -171,66 +171,104 @@ createApp({
             contacts: contacts,
             currentIndex:0,
             inputValue:'',
-            DateTime:DateTime,
+            DT:DateTime,
+            search:'',
 
         }
     },
+    
     methods:{
         chatSelection(index){
             this.currentIndex = index
-            console.log(this.currentIndex);
+            // console.log(this.currentIndex);
         },
 
         newMessage(){
+
+            // const now= this.DT.now()
+            // console.log(now)
+            // const nowFormatted = now.toFormat('HH:mm')
+            // console.log(nowFormatted);
+            this.inputValue = this.inputValue.trim()
+            if (this.inputValue === '') {
+                return
+            }
+
+            const nowDate= this.getDate('dd/LL/yyyy HH:mm:ss')
+            // console.log(nowDate);
+
             const newMex ={
-                date: this.now,
+                date: nowDate,
                 message: this.inputValue,
                 status: 'sent'
             }
             this.contacts[this.currentIndex].messages.push(newMex)
-            this.inputValue = ''
+            const activeContact = this.contacts[this.currentIndex]
 
             setTimeout(() => {
                 const newResponse ={
-                    date: this.now,
+                    date: nowDate,
                     message: 'ok',
                     status: 'received'
                 }
-                this.contacts[this.currentIndex].messages.push(newResponse)
-            }, 1000)
+                activeContact.messages.push(newResponse)
+            }, 1000)    
+            
+            this.inputValue = ''    
         },
 
         messageDate(i){
             newDate = this.contacts[this.currentIndex].messages[i].date
-            // const formattedDate = newDate.toFormat('dd/LL/yyyy')
-            // newDate=this.DateTime.fromISO(newDate)
-            console.log(newDate);
-            return newDate
+            newDateFormat = this.DT.fromFormat(newDate,'dd/LL/yyyy HH:mm:ss')
+            hours = newDateFormat.toFormat('HH:mm') 
+            // console.log(hours);
+            return hours;
+        },
+
+        getDate(format){
+            let now = DateTime.now()
+            if(!format){
+                format = 'dd/LL/yyyy'
+            }
+            console.log(now.toFormat(format));
+            return now.toFormat(format)
+        },
+
+        isHidden(contact){
+            const name = contact.name.toLowerCase()
+            const search = this.search.trim().toLowerCase()
+
+            const result = !name.includes(search)
+            // console.log(name, search, result);
+
+            return result
+        },
+
+        lastMessage(contact){
+
+            let lastIndex = contact.messages.length - 1
+            for (let i = 0; i < lastIndex; i++) {
+                // console.log(contact.messages[lastIndex].date);
+                return contact.messages[lastIndex].message
+            }
+        },
+
+        lastDate(contact){
+
+            let lastIndex = contact.messages.length - 1
+            for (let i = 0; i < lastIndex; i++) {
+                let lastMessageDate = contact.messages[lastIndex].date
+                let newFormat = this.DT.fromFormat(lastMessageDate,'dd/LL/yyyy HH:mm:ss')
+                let hours = newFormat.toFormat('HH:mm') 
+                // console.log(hours);
+                return hours
+                
+            }
         }
+
 
         
     }
 }).mount('#app')
 
 
-// const now = DateTime.now()
-// console.log(now)
-
-// const date = DateTime.fromObject({
-// 	year: 1990,
-// 	month: 10,
-// 	day: 24,
-// 	hour: 14,
-// 	minutes: 31,
-// 	seconds: 56,
-// })
-// console.log(date)
-
-// '24/10/1990'
-// const formattedDate = date.toFormat('dd/LL/yyyy')
-// console.log(formattedDate)
-
-// const dateToParse = '10/01/2020 15:30:55' // dd/LL/yyyy HH:mm:ss
-
-// const parsedDate = DateTime.fromFormat(dateToParse, 'dd/LL/yyyy HH:mm:ss')
-// console.log(parsedDate.toFormat('dd/LL/yyyy'))
